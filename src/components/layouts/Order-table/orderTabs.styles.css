@@ -1,0 +1,23 @@
+
+.order-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+   
+  
+  .order-tabs button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+   
+  
+  .order-tabs button.active {
+    background-color: #ddd;
+  }

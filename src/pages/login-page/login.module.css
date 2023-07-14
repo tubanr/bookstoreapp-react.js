@@ -1,0 +1,61 @@
+.login-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-wrapper h2, p{
+    text-align: start;
+    font-family: Chivo Mono;
+    padding-bottom: 2rem;
+
+}
+.login-img-container{
+    width:45%;
+    overflow: hidden;
+}
+.login-img-container img{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.login-content-container{
+    width: 50%;
+    text-align: start;
+}
+.form-group{
+    width:60%;
+    padding: 1rem;
+    margin-top: 10px;
+
+}
+.form-group label{
+    color: black;
+    display: inline-block;
+   
+}
+.form-input{
+
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+    
+}
+.form-submit{
+    color: var(--white-color);
+    text-decoration: none;
+    background-color: var(--primary-color-bright);
+    padding: 0.8rem 2rem;
+    display: inline-block;
+    transition: 0.3s ease-in;
+
+
+}
+.form-submit:hover{
+    background-color: var(--white-color);
+    color: #333;
+
+}

@@ -1,0 +1,66 @@
+.footer-container{
+   background-color:#333;
+   height: 60px;
+   padding: 50px;
+  
+   bottom: 0;
+   width: 100%;
+
+
+   
+}
+.content-wrapper p{
+    color: #fff;
+    font-family: Chivo Mono;
+    text-align: center;
+    
+    font-size: 1.5rem;
+   
+}
+.footer-container p{
+    color:white;
+    padding-top: 2rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* 
+
+.form-group{
+    padding: 1rem;
+    text-align: start;
+    margin-top: 10px;
+}
+.form-group label{
+    
+    display: inline-block;
+    color: var(--white-color);
+    text-align: left;
+   
+  
+}
+.form-input{
+   
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+    
+}
+.form-submit{
+    color: var(--white-color);
+    text-decoration: none;
+    background-color: var(--primary-color-bright);
+    padding: 0.8rem 2rem;
+    display: inline-block;
+    transition: 0.3s ease-in;
+
+
+}
+.form-submit:hover{
+    background-color: var(--white-color);
+    color: #333;
+
+}
+ */

@@ -1,0 +1,52 @@
+.reviews-container{
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+.reviews-container h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+form{
+    margin-bottom: 20px;
+}
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+button[type="submit"]{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+    background-color: var(--primary-color);
+}
+.reviews-item{
+    
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.reviews-item p:first-child{
+    font-weight: bold;
+    margin-top: 5px;
+}
+.reviews-item p:last-child{
+    margin-bottom: 0;
+    font-family: Chivo Mono;
+}
