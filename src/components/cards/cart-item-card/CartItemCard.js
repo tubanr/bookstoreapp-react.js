@@ -11,7 +11,7 @@ const CartItemCard =( {book}) =>{
     return (
         <section className="cart-item">
           <div className="cart-item-img-container">
-            <img className="cart-item-img"  src={`http://127.0.0.1:8000/${book.image_url} `}alt="cart-item-img" />
+            <img className="cart-item-img"  src={`http://127.0.0.1:8001/${book.image_url} `}alt="cart-item-img" />
           </div>
           <div className="cart-item-content-container">
             <h2>{book?.title}</h2>

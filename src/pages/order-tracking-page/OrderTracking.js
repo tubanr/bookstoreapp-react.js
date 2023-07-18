@@ -16,7 +16,7 @@ const OrderTracking = () => {
     const fetchOrders = async () => {   
       try {
         const userInfo = getUserInfo();
-        const response = await axios.get("http://127.0.0.1:8000/orders", {
+        const response = await axios.get("http://127.0.0.1:8001/orders", {
           headers: {
             Authorization: `Bearer ${userInfo.access_token}`,
           },

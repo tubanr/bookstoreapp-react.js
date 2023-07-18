@@ -22,7 +22,7 @@ const SearchPage = () => {
     const searchBooks = async () => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/books?keyword=${encodeURIComponent(
+          `http://127.0.0.1:8001/books?keyword=${encodeURIComponent(
             searchQuery
           )}`
         );

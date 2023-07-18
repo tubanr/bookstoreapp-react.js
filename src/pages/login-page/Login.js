@@ -30,7 +30,7 @@ const Login = () => {
       const formData = new FormData()
       formData.append("username",loginData.username)
       formData.append("password",loginData.password)
-      const response = await fetch("http://127.0.0.1:8000/token", {
+      const response = await fetch("http://127.0.0.1:8001/token", {
         method: "POST",
         body:formData,
       });

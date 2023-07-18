@@ -8,7 +8,7 @@ const ProductListingAll = () => {
   const [books, setBooks] = useState([]);
   const fetchBooks = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/books");
+      const response = await fetch("http://127.0.0.1:8001/books");
       const data = await response.json();
 
       setBooks(data);

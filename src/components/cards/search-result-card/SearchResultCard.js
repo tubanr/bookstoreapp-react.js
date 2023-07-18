@@ -7,7 +7,7 @@ const SearchResultCard = ({book}) => {
   return (
     <section className="cart-item">
       <div className="cart-item-img-container">
-        <img src={`http://127.0.0.1:8000/${book.image_url} `} className="cart-item-img" alt="cart-item-img" />
+        <img src={`http://127.0.0.1:8001/${book.image_url} `} className="cart-item-img" alt="cart-item-img" />
       </div>
 
       <div className="cart-item-content-container">

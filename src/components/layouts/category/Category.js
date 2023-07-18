@@ -14,7 +14,7 @@ const Category = () => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/categories`);
+        const response = await axios.get(`http://127.0.0.1:8001/categories`);
         setCategories(response.data);
       } catch (error) {
         console.log(error);
@@ -26,7 +26,7 @@ const Category = () => {
   const handleCategoryClick = async (categoryId) => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8000/categories/${categoryId}`
+        `http://127.0.0.1:8001/categories/${categoryId}`
       );
       console.log("response:", response.data);
       setCategoryBooks(response.data.books);
@@ -53,7 +53,7 @@ const Category = () => {
               <div key={book.id} className={styles["book-item"]}>
                 <div className="product-listing-img-container">
                   <img
-                    src={`http://127.0.0.1:8000/${book.image_url} `}
+                    src={`http://127.0.0.1:8001/${book.image_url} `}
                     alt="product-listing-image"
                     className="product-listing-image"
                   />

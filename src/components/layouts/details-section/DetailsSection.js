@@ -29,7 +29,7 @@ const DetailsSection = () => {
         const userInfo = getUserInfo();
         const access_token = userInfo.access_token;
         const response = await axios.post(
-          " http://127.0.0.1:8000/reviews",
+          " http://127.0.0.1:8001/reviews",
           {
             text: reviewText,
             book_id: book.id,
@@ -62,7 +62,7 @@ const DetailsSection = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/books/${id}`);
+        const response = await axios.get(`http://127.0.0.1:8001/books/${id}`);
         setBook(response.data);
       } catch (error) {
         console.log(error);
@@ -100,7 +100,7 @@ const DetailsSection = () => {
       <div className="container">
         <div className="flex-container">
           <div className="book-img-container">
-            <img src={`http://127.0.0.1:8000/${book.image_url} `} alt="book" />
+            <img src={`http://127.0.0.1:8001/${book.image_url} `} alt="book" />
           </div>
 
           <div className="book-detail-container">
@@ -118,7 +118,7 @@ const DetailsSection = () => {
       <div className="container">
         <div className="reviews-container">
           <h3>Customer reviews</h3>
-
+          
           {authenticated ? (
             <form onSubmit={handleSubmitReview}>
               <textarea

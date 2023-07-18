@@ -30,7 +30,7 @@ const CartItemsContainer = () => {
         };
       });
       const res = await axios.post(
-        "http://127.0.0.1:8000/orders",
+        "http://127.0.0.1:8001/orders",
         { order_lines },
         {
           headers: {

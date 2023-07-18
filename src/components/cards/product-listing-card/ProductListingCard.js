@@ -9,7 +9,7 @@ const ProductListingCard = ({ book }) => {
       <div className="product-listing-card">
         <div className="product-listing-img-container">
           <img
-            src={`http://127.0.0.1:8000/${book.image_url} `}
+            src={`http://127.0.0.1:8001/${book.image_url} `}
             alt="product-listing-image"
             className="product-listing-image"
           />
