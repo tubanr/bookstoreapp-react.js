@@ -9,22 +9,24 @@ import toast, { Toaster } from "react-hot-toast";
 import "./Review.styles.css";
 
 const DetailsSection = () => {
-  const [authenticated, setAuthenticated] = useState(isLoggedIn());
+  const [authenticated, setAuthenticated] = useState(isLoggedIn()); //keep track weather user is authenticated or not
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
   const { addItemToCart } = useContext(CartContext);
-  const [reviewText, setReviewText] = useState("");
+  const [reviewText, setReviewText] = useState(""); // to store the user's input for the review text
 
   const handleReviewInputChange = (event) => {
+    //updates review text whenever the user types in the input field
     setReviewText(event.target.value);
   };
 
   const handleSubmitReview = (event) => {
+    //this is called whenever user submits the review form
     event.preventDefault();
 
-    //Perform API request to create the review
     const createReview = async () => {
+      //Perform API request to create the new review
       try {
         const userInfo = getUserInfo();
         const access_token = userInfo.access_token;
@@ -51,7 +53,7 @@ const DetailsSection = () => {
           reviews: [newReview, ...prevBook.reviews],
         }));
 
-        setReviewText("");
+        setReviewText("");  //clear review input field
       } catch (error) {
         console.log(error);
       }
@@ -118,8 +120,8 @@ const DetailsSection = () => {
       <div className="container">
         <div className="reviews-container">
           <h3>Customer reviews</h3>
-          
-          {authenticated ? (
+
+          {authenticated ? ( // Conditional rendering for review form
             <form onSubmit={handleSubmitReview}>
               <textarea
                 placeholder="Write your review"
