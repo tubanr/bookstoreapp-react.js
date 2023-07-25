@@ -4,8 +4,6 @@ import CartItemCard from "../../cards/cart-item-card/CartItemCard";
 import { CartContext } from "../../../pages/cart-page/CartContext";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
-import { createGlobalStyle } from "styled-components";
-import { getUserInfo } from "../../../utils/Auth";
 import toast, { Toaster } from 'react-hot-toast';
 
 
@@ -15,10 +13,12 @@ const CartItemsContainer = () => {
   const access_token = localStorage.getItem("access_token");
   const [totalAmount, setTotalAmount] = useState(0);
 
+  //Stripe library for handling the payment process 
+  const {REACT_APP_STRIPE_KEY} = process.env;
 
-  //Stripe library for handling the payment process
-  const stripeKey =
-    "pk_test_51NSIFAIY2ov5E1uvkKY78GiqnnBVWHas7uPg6cAW6wjUaH67ugoJhlNr8woplDItCd84KgTNP0izQMrZlC8tleP800tPu8k699";
+  
+
+  
   const ontoken = async (token) => {
     console.log(token);
 
@@ -27,7 +27,7 @@ const CartItemsContainer = () => {
         return {
           book_id: item.id,
           quantity: 1,
-        };
+        }; 
       });
       const res = await axios.post(
         "http://127.0.0.1:8001/orders",
@@ -77,7 +77,7 @@ const CartItemsContainer = () => {
               description="Please fill in the details below"  
               amount={totalAmount * 100}
               currency="EUR"
-              stripeKey={stripeKey}
+              stripeKey={REACT_APP_STRIPE_KEY}
               billingAddress
               token={ontoken}
             />

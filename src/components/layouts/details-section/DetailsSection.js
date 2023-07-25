@@ -61,9 +61,11 @@ const DetailsSection = () => {
     createReview();
   };
 
+
+
   useEffect(() => {
     const fetchBook = async () => {
-      try {
+      try { 
         const response = await axios.get(`http://127.0.0.1:8001/books/${id}`);
         setBook(response.data);
       } catch (error) {

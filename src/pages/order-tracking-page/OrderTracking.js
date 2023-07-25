@@ -9,37 +9,34 @@ import ProcessingOrders from "../../components/layouts/Order-table/Tabs/Processi
 import ShippedOrders from "../../components/layouts/Order-table/Tabs/ShippedOrders";
 
 const OrderTracking = () => {
+  //State to hold the orders and selected status
   const [orders, setOrders] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState("pending");
 
+  // useEffect to fetch orders
   useEffect(() => {
-    const fetchOrders = async () => {   
+    const fetchOrders = async () => {
       try {
+        //get user information from the Auth.js
         const userInfo = getUserInfo();
+
+        //send  GET request to fetch orders from the server
         const response = await axios.get("http://127.0.0.1:8001/orders", {
           headers: {
             Authorization: `Bearer ${userInfo.access_token}`,
           },
         });
-        setOrders(response.data);
+
+        //Set orders state with the data recevied from server
+        setOrders(response.data); 
       } catch (error) {
         console.error("error fetching orders", error);
       }
     };
+    //Call the fetchOrders function to get orders from the server
     fetchOrders();
   }, []);
 
-  // const filterOrderByStatus = (orderStatus) =>{
-  //   if (orderStatus ==="all"){
-  //     setOrders(orders);
-  //   } else {
-  //     const filteredOrders = orders.filter(
-  //       (order) => order.order_status === orderStatus
-  //     );
-  //     setOrders(filteredOrders);
-  //   }
-  //   setSelectedStatus(orderStatus);
-  // };
   const filterOrderByStatus = (orderStatus) => {
     if (orderStatus === "all") {
       setSelectedStatus("all");
@@ -62,15 +59,15 @@ const OrderTracking = () => {
           onTabClick={filterOrderByStatus}
         />
         {selectedStatus === "pending" && (
-          <PendingOrders orders={filteredOrders} />
+          <PendingOrders setOrders={setOrders} orders={filteredOrders} />
         )}
 
         {selectedStatus === "processing" && (
-          <ProcessingOrders orders={filteredOrders} />
+          <ProcessingOrders setOrders={setOrders} orders={filteredOrders} />
         )}
 
         {selectedStatus === "shipped" && (
-          <ShippedOrders orders={filteredOrders} />
+          <ShippedOrders setOrders={setOrders} orders={filteredOrders} />
         )}
       </div>
     </section>
@@ -78,3 +75,28 @@ const OrderTracking = () => {
 };
 
 export default OrderTracking;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const filterOrderByStatus = (orderStatus) =>{
+//   if (orderStatus ==="all"){
+//     setOrders(orders);
+//   } else {
+//     const filteredOrders = orders.filter(
+//       (order) => order.order_status === orderStatus
+//     );
+//     setOrders(filteredOrders);
+//   }
+//   setSelectedStatus(orderStatus);
+// };

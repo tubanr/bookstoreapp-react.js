@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./productListingCard.styles.css";
-import ProductImage from "../../../assets/books/book2.jpg";
 import { Link } from "react-router-dom";
 
 const ProductListingCard = ({ book }) => {
