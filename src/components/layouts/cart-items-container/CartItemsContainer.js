@@ -17,8 +17,6 @@ const CartItemsContainer = () => {
   const {REACT_APP_STRIPE_KEY} = process.env;
 
   
-
-  
   const ontoken = async (token) => {
     console.log(token);
 
