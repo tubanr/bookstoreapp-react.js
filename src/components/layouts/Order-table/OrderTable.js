@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTable } from "react-table";
 import "./orderTable.styles.css";
-import axios from "axios";
 import { getUserInfo } from "../../../utils/Auth";
 
-
 const OrderTable = ({ orders, setOrders }) => {
-  
-
   const data = React.useMemo(() => orders, [orders]);
+  // if the orders props changes(after a state update),
+  // React will recompute the value of data by calling memoized function.
 
-
-  const handleStatusChange = async (orderId, newStatus) => {
+  const handleStatusChange = async (order_id, newStatus) => {
     try {
       const userInfo = getUserInfo();
       const access_token = userInfo.access_token;
+
+
+
       //Make API request to update the order status
-      const response = await axios.put(
-        `/orders/${orderId}`,
-        { order_status: newStatus },
+      const response = await fetch(
+        `http://127.0.0.1:8001/orders/${order_id}?order_status=${newStatus}`,
+
         {
+          method:"PUT",
           headers: {
-            Authorization: `Bearer ${userInfo.access_token}`,
-          },
+          Authorization: `Bearer ${getUserInfo().access_token}`,
+          }
+
         }
       );
-      //update order status
+    
       const updatedOrders = orders.map((order) => {
-        if (order.id === orderId) {
+        if (order.id === order_id) {
           return { ...order, order_status: newStatus };
         }
         return order;
@@ -35,27 +37,34 @@ const OrderTable = ({ orders, setOrders }) => {
 
       //set the updated data in the component state
       setOrders(updatedOrders);
+
     } catch (error) {
       console.log(error);
     }
   };
+ 
+
 
   const columns = React.useMemo(
     () => [
       { Header: "Order id", accessor: "id" },
-      { Header: "User id", accessor: "user_id" },
-      { Header: "Orderline", accessor: "order_lines",Cell:({ cell}) =>{
-        return (
-          <ul>
-            {cell.value.map((order_lines) =>(
-              <li>
-                Book Id:{order_lines.book_id}, Quantity: {order_lines.quantity}
-              </li>
-            ))}
-          </ul>
-        );
+      { Header: "User Name", accessor: "user.username" },
+      {
+        Header: "Orderline",
+        accessor: "order_lines",
+        Cell: ({ cell }) => {
+          return (
+            <ul>
+              {cell.value.map((order_lines, index) => (
+                <li key={index}>
+                  Book Id:{order_lines.book_id}, Quantity:{" "}
+                  {order_lines.quantity}
+                </li>
+              ))}
+            </ul>
+          );
+        },
       },
-     },
       {
         Header: "order status",
         accessor: "order_status",
@@ -109,3 +118,16 @@ const OrderTable = ({ orders, setOrders }) => {
 };
 
 export default OrderTable;
+
+
+      // const params= new URLSearchParams({
+      //   order_status: newStatus
+      // }).toString();
+
+  // axios.defaults.headers.common = {
+      //   Authorization: `Bearer ${getUserInfo().access_token}`,
+      // };
+      // const response = await axios.put(
+      //   `http://127.0.0.1:8001/orders/${order_id}?order_status=${newStatus}`
+      // );
+      //update order status
