@@ -23,3 +23,41 @@
   .table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
   }
+
+  .list-container{
+    display: flex;
+  }
+
+  .list-container ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+ .list-container li{
+    display: inline-block;
+    padding: 5px 10px;
+  
+    
+  }
+
+ .list-container img{
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+
+  }
+  ul li .title{
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 10px;
+
+  }
+
+  ul li .quantity {
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 10px;
+    padding: 5px 10px;
+    text-align: center;
+  }

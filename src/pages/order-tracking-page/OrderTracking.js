@@ -75,28 +75,3 @@ const OrderTracking = () => {
 };
 
 export default OrderTracking;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const filterOrderByStatus = (orderStatus) =>{
-//   if (orderStatus ==="all"){
-//     setOrders(orders);
-//   } else {
-//     const filteredOrders = orders.filter(
-//       (order) => order.order_status === orderStatus
-//     );
-//     setOrders(filteredOrders);
-//   }
-//   setSelectedStatus(orderStatus);
-// };
