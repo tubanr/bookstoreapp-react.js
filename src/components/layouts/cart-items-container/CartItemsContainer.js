@@ -67,7 +67,7 @@ const CartItemsContainer = () => {
             {cartItems.map((item, index) => (
               <CartItemCard key={index} book={item} />
             ))}
-            <h2>Total Amount = €{totalAmount}</h2>
+            <h2>Total Amount = €{totalAmount.toFixed(2)}</h2>
             
 
             <StripeCheckout
