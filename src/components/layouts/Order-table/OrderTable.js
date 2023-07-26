@@ -13,21 +13,18 @@ const OrderTable = ({ orders, setOrders }) => {
       const userInfo = getUserInfo();
       const access_token = userInfo.access_token;
 
-
-
       //Make API request to update the order status
       const response = await fetch(
         `http://127.0.0.1:8001/orders/${order_id}?order_status=${newStatus}`,
 
         {
-          method:"PUT",
+          method: "PUT",
           headers: {
-          Authorization: `Bearer ${getUserInfo().access_token}`,
-          }
-
+            Authorization: `Bearer ${getUserInfo().access_token}`,
+          },
         }
       );
-    
+
       const updatedOrders = orders.map((order) => {
         if (order.id === order_id) {
           return { ...order, order_status: newStatus };
@@ -37,13 +34,10 @@ const OrderTable = ({ orders, setOrders }) => {
 
       //set the updated data in the component state
       setOrders(updatedOrders);
-
     } catch (error) {
       console.log(error);
     }
   };
- 
-
 
   const columns = React.useMemo(
     () => [
@@ -54,14 +48,24 @@ const OrderTable = ({ orders, setOrders }) => {
         accessor: "order_lines",
         Cell: ({ cell }) => {
           return (
+            <div className="list-container">
             <ul>
               {cell.value.map((order_lines, index) => (
                 <li key={index}>
-                  Book Id:{order_lines.book_id}, Quantity:{" "}
-                  {order_lines.quantity}
+                  <div> 
+
+                    <img src={`http://127.0.0.1:8001/${order_lines.book.image_url} `}/>
+
+
+                    <div className="title">{order_lines.book.title}</div>
+                    <div className="quantity">Quantity:{order_lines.quantity}</div>
+
+                  </div>
+                 
                 </li>
               ))}
             </ul>
+            </div>
           );
         },
       },
@@ -78,7 +82,6 @@ const OrderTable = ({ orders, setOrders }) => {
             <option value="pending">Pending</option>
             <option value="processing">Processing</option>
             <option value="shipped">Shipped</option>
-            <option value="delivered">Delivered</option>
           </select>
         ),
       },
@@ -118,16 +121,3 @@ const OrderTable = ({ orders, setOrders }) => {
 };
 
 export default OrderTable;
-
-
-      // const params= new URLSearchParams({
-      //   order_status: newStatus
-      // }).toString();
-
-  // axios.defaults.headers.common = {
-      //   Authorization: `Bearer ${getUserInfo().access_token}`,
-      // };
-      // const response = await axios.put(
-      //   `http://127.0.0.1:8001/orders/${order_id}?order_status=${newStatus}`
-      // );
-      //update order status
